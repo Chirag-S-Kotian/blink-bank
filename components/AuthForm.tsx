@@ -90,12 +90,6 @@ const AuthForm = ({ type }: { type: String }) => {
                   />
                   <CustomInput
                     control={form.control}
-                    name="email"
-                    label="Email"
-                    placeholder="Example: NY"
-                  />
-                  <CustomInput
-                    control={form.control}
                     name="postalcode"
                     label="Postal Code"
                     placeholder="Ex:567556"
