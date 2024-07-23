@@ -8,15 +8,17 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import CustomInput from "./CustomInput";
-import { authformSchema } from "@/lib/utils";
+import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 
 const AuthForm = ({ type }: { type: String }) => {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof authformSchema>>({
-    resolver: zodResolver(authformSchema),
+  const formSchema = authFormSchema(type);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -24,7 +26,7 @@ const AuthForm = ({ type }: { type: String }) => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof authformSchema>) {
+  function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     console.log(values);
     setIsLoading(false);
@@ -78,7 +80,7 @@ const AuthForm = ({ type }: { type: String }) => {
                   />
                   <CustomInput
                     control={form.control}
-                    name="address"
+                    name="address1"
                     label="Address"
                     placeholder="Enter your permanent address"
                   />
