@@ -196,7 +196,7 @@ export const getTransactionStatus = (date: Date) => {
 };
 
 export const authformSchema = z.object({
-  //sign-up
+  // sign-up
   firstName : z.string().min(3),
   lastName : z.string().min(3),
   address1 : z.string().max(50),
