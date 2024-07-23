@@ -18,9 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-  username: z.string().min(4, {
-    message: "Username must be at least 4 characters.",
-  }),
+  email: z.string().email(),
+  password: z.string().min(6),
 });
 
 const AuthForm = ({ type }: { type: String }) => {
@@ -29,7 +28,8 @@ const AuthForm = ({ type }: { type: String }) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
+      password: "",
     },
   });
 
@@ -56,7 +56,7 @@ const AuthForm = ({ type }: { type: String }) => {
         </Link>
 
         <div className="flex flex-col gap-1 md:gap-3">
-          <h1 className="text-24 lg:text-36 font-semibold text-gray-900">
+          <h1 className="text-24 lg:text-36 font-semibold text-gray-900 pt-6">
             {user ? "Link Account" : type === "sign-in" ? "Sign In" : "Sign Up"}
           </h1>
           <p className="text-16 font-normal text-gray-600">
@@ -76,16 +76,39 @@ const AuthForm = ({ type }: { type: String }) => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="shadcn" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      This is your public display name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
+                  <div className="form-item">
+                    <FormLabel className="form-label">Email</FormLabel>
+                    <div className="flex w-full flex-col">
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your email"
+                          className="input-class"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="form-message mt-2"></FormMessage>
+                    </div>
+                  </div>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <div className="form-item">
+                    <FormLabel className="form-label">Password</FormLabel>
+                    <div className="flex w-full flex-col">
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your password"
+                          className="input-class"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="form-message mt-2"></FormMessage>
+                    </div>
+                  </div>
                 )}
               />
               <Button type="submit">Submit</Button>
