@@ -7,7 +7,7 @@ import { authformSchema } from "@/lib/utils";
 
 interface CustomInput {
   control: Control<z.infer<typeof authformSchema>>;
-  name: string;
+  name: "email" | "password";
   placeholder: string;
   label: string;
 }
