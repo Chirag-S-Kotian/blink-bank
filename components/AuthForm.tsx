@@ -62,6 +62,58 @@ const AuthForm = ({ type }: { type: String }) => {
         <>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              {type === "sign-up" && (
+                <>
+                  <CustomInput
+                    control={form.control}
+                    name="firstName"
+                    label="First Name"
+                    placeholder="Enter your first name"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="lastName"
+                    label="Last Name"
+                    placeholder="Enter your last name"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="address"
+                    label="Address"
+                    placeholder="Enter your permanent address"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="state"
+                    label="State"
+                    placeholder="Enter your state"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="email"
+                    label="Email"
+                    placeholder="Example: NY"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="postalcode"
+                    label="Postal Code"
+                    placeholder="Ex:567556"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="dateOfBirth"
+                    label="Date of Birth"
+                    placeholder="YYYY-mm-dd"
+                  />
+                  <CustomInput
+                    control={form.control}
+                    name="ssn"
+                    label="SSN"
+                    placeholder="Example: 1234"
+                  />
+                </>
+              )}
               <CustomInput
                 control={form.control}
                 name="email"
