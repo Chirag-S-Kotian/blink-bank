@@ -13,7 +13,7 @@ import CustomInput from "./CustomInput";
 import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-// import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
+import { getLoggedInUser, signIn, signUp } from '@/lib/actions/user.actions';
 // import PlaidLink from './PlaidLink';
 
 const AuthForm = ({ type }: { type: string }) => {
@@ -46,7 +46,7 @@ const AuthForm = ({ type }: { type: string }) => {
           address1: data.address1!,
           city: data.city!,
           state: data.state!,
-          postalCode: data.postalcode!,
+          postalCode: data.postalCode!,
           dateOfBirth: data.dateOfBirth!,
           ssn: data.ssn!,
           email: data.email,
